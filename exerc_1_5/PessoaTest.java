@@ -6,12 +6,12 @@ import org.junit.jupiter.api.Test;
 public class PessoaTest
 {
     @Test
-    void deveCriarPessoa(){
+    public void deveCriarPessoa(){
         criarEChecarPessoa(2004);
     }
 
     @Test
-    void deveCumprirEnunciadoDoExercicio(){
+    public void deveCumprirEnunciadoDoExercicio(){
         String nome1 = "Maria";
         double peso1 = 60.5;
         double altura1 = 1.65;
@@ -43,7 +43,7 @@ public class PessoaTest
     }
 
     @Test
-    void dadosDaPessoaDevemSerOsMesmosInformados(){
+    public void dadosDaPessoaDevemSerOsMesmosInformados(){
 
         String nome = "Maria";
         double peso = 56.8;
@@ -61,7 +61,7 @@ public class PessoaTest
     }
 
     @Test
-    void naoDeveAlterarDadosQuandoForInvalido(){
+    public void naoDeveAlterarDadosQuandoForInvalido(){
         String nome = "Maria";
         double peso = 56.8;
         double altura = 1.65;
@@ -90,7 +90,7 @@ public class PessoaTest
     }
 
     @Test
-    void toStringDeveRetornarNaFormatacaoCorreta(){
+    public void toStringDeveRetornarNaFormatacaoCorreta(){
         String nome = "Maria";
         double peso = 60.5;
         double altura = 1.65;
