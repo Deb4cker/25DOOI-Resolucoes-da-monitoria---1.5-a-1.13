@@ -77,9 +77,9 @@ public class PessoaTest
         maria.setPeso(pesoInvalido);
         maria.setAltura(alturaInvalida);
 
-        assertEquals(nome, maria.getNome(), "O nome da pessoa deve ser mantido.");
-        assertEquals(peso, maria.getPeso(), "O peso da pessoa deve ser mantido.");
-        assertEquals(altura, maria.getAltura(), "A altura da pessoa deve ser mantido.");
+        assertEquals(nome, maria.getNome());
+        assertEquals(peso, maria.getPeso());
+        assertEquals(altura, maria.getAltura());
     }
 
     @Test
