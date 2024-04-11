@@ -9,6 +9,12 @@ public class Pessoa {
         this.anoNascimento = anoNascimento;
     }
 
+    public Pessoa(int anoNascimento, String nome) {
+        this.anoNascimento = anoNascimento;
+        this.nome = nome;
+    }
+
+    
     public String getNome() {
         return nome;
     }
