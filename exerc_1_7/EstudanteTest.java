@@ -1,157 +1,63 @@
 import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class EstudanteTest
 {
     @Test
-    public void deveCumprirEnunciadoDoExercicio(){
-        String nome1 = "Fernando";
-        int matricula1 = 556644;
-
-        String nome2 = "Beth";
-        int matricula2 = 579035;
-
-        Estudante est1 = new Estudante(nome1, matricula1);
-        Estudante est2 = new Estudante(nome2, matricula2);
-
+    public void testeEstudante1() {
+        Estudante est1 = new Estudante("Fernando",556644);
         est1.adicionarCreditos(35);
+
+        // verificar o estado inicial do objeto
+        assertEquals(556644, est1.getMatricula());
+        assertEquals("Fernando", est1.getNome());
+        assertEquals(35, est1.getCreditos());
+
+        // verificar login
+        System.out.println(est1.getLogin());
+        assertEquals("Fer644", est1.getLogin());
+
+        // verificar representação textual
+        assertEquals("Nome: Fernando, Matrícula: 556644, Login: Fer644, Créditos: 35", est1.toString());
+
+        // manipular o objeto
+        est1.adicionarCreditos(4);
+        est1.setNome("Fernando Santos");
+
+        // verificar estado e representação textual após manipulações
+        assertEquals(556644, est1.getMatricula());
+        assertEquals("Fernando Santos", est1.getNome());
+        assertEquals(39, est1.getCreditos());
+        assertEquals("Fer644", est1.getLogin());
+        assertEquals("Nome: Fernando Santos, Matrícula: 556644, Login: Fer644, Créditos: 39", est1.toString());
+    }
+    
+    @Test
+    public void testeEstudante2() {
+        Estudante est2 = new Estudante("Beth", 579035);
         est2.adicionarCreditos(80);
 
-        operacoesEstudante1(est1);
-        operacoesEstudante2(est2);
-    }
-    
-    @Test
-    public void dadosDoEstudanteDevemSerOsMesmosInformados(){
-        String nome = "Fernando";
-        int matricula = 556644;
-        int creditosAdicionais = 10;
-        Estudante estudante = new Estudante(nome, matricula);
+        // verificar o estado inicial do objeto
+        assertEquals(579035, est2.getMatricula());
+        assertEquals("Beth", est2.getNome());
+        assertEquals(80, est2.getCreditos());
 
-        estudante.adicionarCreditos(creditosAdicionais);
-
-        assertEquals(nome, estudante.getNome());
-        assertEquals(matricula, estudante.getNumeroMatricula());
-        assertEquals(creditosAdicionais, estudante.getCreditos());
-    }
-
-    @Test
-    public void naoDeveAlterarDadosQuandoForInvalido(){
-        String nome = "Fernando";
-        int matricula = 556644;
-        int creditosAdicionais = 10;
-
-        String nomeInvalido = " ";
-        int creditosAdicionaisInvalidos = -8;
-
-        Estudante estudante = new Estudante(nome, matricula);
-        estudante.adicionarCreditos(creditosAdicionais);
-
-        estudante.setNome(nomeInvalido);
-        estudante.adicionarCreditos(creditosAdicionaisInvalidos);
-
-        assertEquals(creditosAdicionais, estudante.getCreditos());
-        assertEquals(nome, estudante.getNome());
-    }
-
-    @Test
-    public void loginDeveEstarNoFormatoCorreto(){
-        String nome = "Fernando";
-        int matricula = 556644;
-        Estudante estudante = new Estudante(nome, matricula);
-
-        String primeirasLetrasDoNome = nome.substring(0, 3);
-        String matriculaString = String.valueOf(matricula);
-        String ultimosNumerosDaMatricula = matriculaString.substring(matriculaString.length() - 3);
-
-        String login = primeirasLetrasDoNome + ultimosNumerosDaMatricula;
-
-        assertEquals(6, estudante.getLogin().length());
-        assertEquals(login, estudante.getLogin());
-        assertEquals(primeirasLetrasDoNome, estudante.getNome().substring(0, 3));
-
-        String matriculaDoEstudante = String.valueOf(estudante.getNumeroMatricula());
-        assertEquals(ultimosNumerosDaMatricula, matriculaDoEstudante.substring(matriculaDoEstudante.length() - 3));
-    }
-
-    @Test
-    public void toStringDeveRetornarNaFormatacaoCorreta(){
-        String nome = "Fernando";
-        int matricula = 556644;
-        int creditos = 10;
-        Estudante estudante = new Estudante(nome, matricula);
-        estudante.adicionarCreditos(creditos);
-
-        String formatoCorreto = "Nome: " + nome +
-                ", Matricula: " + matricula +
-                ", Créditos: " + creditos +
-                '.';
-
-        assertEquals(formatoCorreto, estudante.toString());
-    }
-    
-    private void operacoesEstudante1(Estudante est1){
-        String loginEsperado = "Fer644";
-        String novoNome = "Fernando dos Santos";
-
-        //i. Retornar e imprimir o login
-        assertEquals(loginEsperado, est1.getLogin());
-        System.out.println(est1.getLogin());
-
-        //ii. Retornar e imprimir a representação textual
-        checarPadraoToString(est1);
-        System.out.println(est1);
-
-        //iii. Adicionar 4 créditos.
-        boolean adicionado = est1.adicionarCreditos(4);
-        assertEquals(true, adicionado);
-
-        //iv. Retornar e imprimir a representação textual.
-        checarPadraoToString(est1);
-        System.out.println(est1);
-
-        //v. Alterar o nome para Fernando Santos.
-        est1.setNome(novoNome);
-        assertEquals(novoNome, est1.getNome());
-
-        //vi. Retornar e imprimir o login
-        assertEquals(loginEsperado, est1.getLogin());
-        System.out.println(est1.getLogin());
-
-        //vii. Retornar e imprimir a representação textual
-        checarPadraoToString(est1);
-        System.out.println(est1);
-    }
-
-    private void operacoesEstudante2(Estudante est2){
-        String novoNome = "Elizabeth";
-        String loginEsperadoAposMudancaDeNome = "Eli035";
-
-        //i. Retornar e imprimir a representação textual.
-        checarPadraoToString(est2);
-        System.out.println(est2);
-
-        //ii. Adicionar -8 créditos.
-        boolean adicionado = est2.adicionarCreditos(-8);
-        assertEquals(false, adicionado);
-
-        //iii. Retornar e imprimir a representação textual.
-        checarPadraoToString(est2);
-        System.out.println(est2);
-
-        //iv. Alterar o nome para Elizabeth.
-        est2.setNome(novoNome);
-        assertEquals(novoNome, est2.getNome());
-
-        //v. Retornar e imprimir o login.
-        assertEquals(loginEsperadoAposMudancaDeNome, est2.getLogin());
+        // verificar login
         System.out.println(est2.getLogin());
-    }
+        assertEquals("Bet035", est2.getLogin());
 
-    private void checarPadraoToString(Estudante est){
-        String toStringEsperado = "Nome: " + est.getNome() + ", Matricula: " + est.getNumeroMatricula() + ", Créditos: " + est.getCreditos() + '.';
-        assertEquals(toStringEsperado, est.toString());
+        // verificar representação textual
+        assertEquals("Nome: Beth, Matrícula: 579035, Login: Bet035, Créditos: 80", est2.toString());
+
+        // manipular o objeto
+        est2.adicionarCreditos(-8);
+        est2.setNome("Elizabeth");
+
+        // verificar estado e representação textual após manipulações
+        assertEquals(579035, est2.getMatricula());
+        assertEquals("Elizabeth", est2.getNome());
+        assertEquals(80, est2.getCreditos());
+        assertEquals("Eli035", est2.getLogin());
+        assertEquals("Nome: Elizabeth, Matrícula: 579035, Login: Eli035, Créditos: 80", est2.toString());
     }
 }

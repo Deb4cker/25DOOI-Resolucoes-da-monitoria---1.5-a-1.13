@@ -17,7 +17,7 @@ public class Estudante {
         if (!nome.isBlank()) this.nome = nome;
     }
 
-    public int getNumeroMatricula() {
+    public int getMatricula() {
         return numeroMatricula;
     }
 
@@ -41,8 +41,8 @@ public class Estudante {
     @Override
     public String toString() {
         return  "Nome: " + nome +
-                ", Matricula: " + numeroMatricula +
-                ", Créditos: " + creditos +
-                '.';
+                ", Matrícula: " + numeroMatricula +
+                ", Login: " + getLogin() +
+                ", Créditos: " + creditos;
     }
 }

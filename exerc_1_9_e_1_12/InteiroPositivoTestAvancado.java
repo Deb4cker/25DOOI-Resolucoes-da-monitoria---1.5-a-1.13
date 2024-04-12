@@ -70,7 +70,7 @@ public class InteiroPositivoTestAvancado
     @Test
     public void deveRetornarFuncaoHCorreta(){
 
-        int numeroDeCasasDepoisDaVirgula = 4;
+        double formatoDeCasasDepoisDaVirgula = 0.0001;
         double[] resultadosEsperados = {
                 0,      //i = 00;
                 1,      //i = 01;
@@ -93,14 +93,14 @@ public class InteiroPositivoTestAvancado
             numero.setValor(i);
             hx = numero.funcaoH();
             resultadoEsperado = resultadosEsperados[i];
-            assertEquals(resultadoEsperado, hx, numeroDeCasasDepoisDaVirgula, "h("+ i +") deve ser igual a " + resultadoEsperado);
+            assertEquals(resultadoEsperado, hx, formatoDeCasasDepoisDaVirgula, "h("+ i +") deve ser igual a " + resultadoEsperado);
         }
     }
 
     @Test
     public void deveRetornarFuncaoPCorreta(){
 
-        int numeroDeCasasDepoisDaVirgula = 10;
+        double formatoDeCasasDepoisDaVirgula = 0.0001;
         double[] resultadosEsperados = {
                 0,           //i = 00;
                 0.5,         //i = 01;
@@ -123,7 +123,7 @@ public class InteiroPositivoTestAvancado
             numero.setValor(i);
             px = numero.funcaoP();
             resultadoEsperado = resultadosEsperados[i];
-            assertEquals(resultadoEsperado, px, numeroDeCasasDepoisDaVirgula, "p("+ i +") deve ser igual a " + resultadoEsperado);
+            assertEquals(resultadoEsperado, px, formatoDeCasasDepoisDaVirgula, "p("+ i +") deve ser igual a " + resultadoEsperado);
         }
     }
 

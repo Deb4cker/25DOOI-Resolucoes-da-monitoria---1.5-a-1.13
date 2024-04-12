@@ -40,7 +40,7 @@ public class EstudanteTestAvancado
         estudante.adicionarCreditos(creditosAdicionais);
 
         assertEquals(nome, estudante.getNome(), "Nome do estudante deve ser o mesmo informado.");
-        assertEquals(matricula, estudante.getNumeroMatricula(), "Matricula do estudante deve ser a mesma informada.");
+        assertEquals(matricula, estudante.getMatricula(), "Matricula do estudante deve ser a mesma informada.");
         assertEquals(creditosAdicionais, estudante.getCreditos(), "Créditos do estudante devem bater com a quantidade ganha.");
     }
 
@@ -82,22 +82,23 @@ public class EstudanteTestAvancado
         assertEquals(login, estudante.getLogin(), "Login do estudante deve ser igual ao gerado.");
         assertEquals(primeirasLetrasDoNome, estudante.getNome().substring(0, 3), "3 primeiras letras do login devem bater com as 3 primeiras letras do nome do estudante.");
 
-        String matriculaDoEstudante = String.valueOf(estudante.getNumeroMatricula());
+        String matriculaDoEstudante = String.valueOf(estudante.getMatricula());
         assertEquals(ultimosNumerosDaMatricula, matriculaDoEstudante.substring(matriculaDoEstudante.length() - 3), "3 ultimos numeros do login devem bater com os 3 ultimos numeros da matricula do estudante.");
     }
 
     @Test
     public void toStringDeveRetornarNaFormatacaoCorreta(){
         String nome = "Fernando";
+        String login = "Fer644";
         int matricula = 556644;
         int creditos = 10;
         Estudante estudante = criarEValidarEstudante(nome, matricula);
         estudante.adicionarCreditos(creditos);
 
         String formatoCorreto = "Nome: " + nome +
-                ", Matricula: " + matricula +
-                ", Créditos: " + creditos +
-                '.';
+                ", Matrícula: " + matricula +
+                ", Login: " + login + 
+                ", Créditos: " + creditos;
 
         assertEquals(formatoCorreto, estudante.toString(), "O to String deve estar no formato determinado.");
     }
@@ -167,7 +168,7 @@ public class EstudanteTestAvancado
     }
 
     private void checarPadraoToString(Estudante est){
-        String toStringEsperado = "Nome: " + est.getNome() + ", Matricula: " + est.getNumeroMatricula() + ", Créditos: " + est.getCreditos() + '.';
+        String toStringEsperado = "Nome: " + est.getNome() + ", Matrícula: " + est.getMatricula() + ", Login: " + est.getLogin() + ", Créditos: " + est.getCreditos();
         assertEquals(toStringEsperado, est.toString(), "ToString deve estar como o esperado");
     }
 }
