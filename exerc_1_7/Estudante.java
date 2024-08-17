@@ -13,8 +13,11 @@ public class Estudante {
         return nome;
     }
 
-    public void setNome(String nome) {
-        if (!nome.isBlank()) this.nome = nome;
+    public boolean setNome(String nome) {
+        boolean ehNomeValido = !nome.isBlank();
+        if (ehNomeValido) this.nome = nome;
+
+        return ehNomeValido;
     }
 
     public int getMatricula() {
