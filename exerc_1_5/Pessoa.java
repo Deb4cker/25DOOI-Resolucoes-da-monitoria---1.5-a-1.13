@@ -13,33 +13,38 @@ public class Pessoa {
         this.anoNascimento = anoNascimento;
         this.nome = nome;
     }
-
     
     public String getNome() {
         return nome;
     }
 
-    public void setNome(String nome) {
-        boolean ehNomeInvalido = nome.isBlank();
-        this.nome = ehNomeInvalido? this.nome : nome;
+    public boolean setNome(String nome) {
+        boolean ehNomeValido = !nome.isBlank();
+        if (ehNomeValido) this.nome = nome;
+        
+        return ehNomeValido;
     }
 
     public double getPeso() {
         return peso;
     }
 
-    public void setPeso(double peso) {
-        boolean ehPesoInvalido = peso <= 0.0;
-        this.peso = ehPesoInvalido? this.peso : peso;
+    public boolean setPeso(double peso) {
+        boolean ehPesoValido = peso > 0.0;
+        if (ehPesoValido) this.peso = peso;
+
+        return ehPesoValido;
     }
 
     public double getAltura() {
         return altura;
     }
 
-    public void setAltura(double altura) {
-        boolean ehAlturaInvalida = altura <= 0.0;
-        this.altura = ehAlturaInvalida? this.altura : altura;
+    public boolean setAltura(double altura) {
+        boolean ehAlturaValida = altura > 0.0;
+        if(ehAlturaValida) this.altura = altura;
+
+        return ehAlturaValida;
     }
 
     @Override
