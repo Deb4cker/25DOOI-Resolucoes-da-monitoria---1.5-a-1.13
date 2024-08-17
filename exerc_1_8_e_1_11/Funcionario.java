@@ -1,13 +1,13 @@
 public class Funcionario {
     private String nome;
-    private double horasTrabalhadas;
     private double salarioHora;
+    private double horasTrabalhadas;
     private int quantidadeDependentes;
 
-    public Funcionario(String nome, double horasTrabalhadas, double salarioHora, int quantidadeDependentes) {
+    public Funcionario(String nome, double salarioHora, double horasTrabalhadas, int quantidadeDependentes) {
         this.nome = nome;
-        this.horasTrabalhadas = horasTrabalhadas;
         this.salarioHora = salarioHora;
+        this.horasTrabalhadas = horasTrabalhadas;
         this.quantidadeDependentes = quantidadeDependentes;
     }
 
@@ -82,13 +82,13 @@ public class Funcionario {
 
     @Override
     public String toString() {
-        return "Nome: " + nome +
-                ", Dependentes: " + quantidadeDependentes +
-                ", Sal. Hora: " + salarioHora +
-                ", Horas Trab.: " + horasTrabalhadas +
-                ", Sal. Bruto.: " + getSalarioBruto() +
-                ", INSS.: " + descontoINSS() +
-                ", IR.: " + descontoImpostoDeRenda() +
-                ", Sal. Líquido: " + getSalarioLiquido();
+        return "Nome: " + nome    +
+                ", Dependentes: " + quantidadeDependentes    +
+                ", Sal. Hora: "   + salarioHora              +
+                ", Horas Trab.: " + horasTrabalhadas         +
+                ", Sal. Bruto.: " + getSalarioBruto()        +
+                ", INSS.: "       + descontoINSS()           +
+                ", IR.: "         + descontoImpostoDeRenda() +
+                ", Sal. Líquido: "+ getSalarioLiquido();
     }
 }

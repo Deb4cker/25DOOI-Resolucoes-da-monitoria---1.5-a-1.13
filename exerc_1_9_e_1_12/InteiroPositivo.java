@@ -27,18 +27,13 @@ public class InteiroPositivo {
 
     public long fatorial(){
         long resultado = 1;
-        for (int i = 1; i <= valor; i++){
-            resultado *= i;
-        }
+        for (int i = 1; i <= valor; i++) resultado *= i;
         return resultado;
     }
 
     public double funcaoH(){
         double resultado = 0;
-
-        for (int i = 1; i<= valor; i++)
-            resultado += (double) 1 / i ;
-
+        for (int i = 1; i<= valor; i++) resultado += (double) 1 / i ;
         return resultado;
     }
 
