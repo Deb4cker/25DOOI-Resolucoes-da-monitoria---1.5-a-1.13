@@ -1,73 +1,48 @@
 import java.util.Arrays;
-import java.util.Scanner;
 
-public class ArrayInteiros {
-
+public class ArrayInteiros 
+{
     private final int[] array;
 
     public ArrayInteiros(int tamanho){
-        array = new int[tamanho];
+        array = new int[Math.max(tamanho, 0)];
     }
 
-    public String imprimirArray() {
-        String resultado = "";
-        boolean ehUltimoValor;
-
-        for (int i = 0; i < array.length; i++) {
-            ehUltimoValor = i == array.length - 1;
-
-            if (ehUltimoValor)
-                resultado += array[i];
-            else
-                resultado += array[i] + ", ";
-        }
-
-        System.out.println(resultado);
-        return resultado;
+    public int[] getArrayInteiros(){
+        return array;
     }
 
-    public void preencherArray(){
-        Scanner scanner = new Scanner(System.in);
-        for (int i = 0; i < array.length; i++) array[i] = scanner.nextInt();
-        scanner.close();
-    }
-
-    public void preencherArray(int[] valores){
-        if (valores.length == array.length)
-            for (int i = 0; i < array.length; i++)
-                array[i] = valores[i];
+    public boolean setValor(int index, int valor){
+        final boolean indexValido = index >= 0 && index < array.length;
+        if (indexValido) array[index] = valor;
+        return indexValido;
     }
 
     public boolean contem(int numero){
-        for (int i = 0; i < array.length; i++)
-            if (array[i] == numero) return true;
-
+    	for (int i = 0; i < array.length; i++) 
+    		if (array[i] == numero) return true;
         return false;
     }
 
-    public int maiorValor(){
+    public int maior(){
+        int indexMaior = 0;
         int maiorValor = array[0];
 
-        for (int i = 0; i < array.length; i++){
-            maiorValor = Math.max(array[i], maiorValor);
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] > maiorValor) {
+                maiorValor = array[i];
+                indexMaior = i;
+            }
         }
 
-        return maiorValor;
+        return indexMaior;
     }
 
-    public String frequenciaAbsoluta(){
-        String resultado = "";
+    public int[] frequenciaAbsoluta(){
         int[] frequencias = new int[101];
-
-        for (int i = 0; i < array.length; i++)
-            if (array[i] >= 0 && array[i] <= 100)
-                frequencias[array[i]]++;
-
-        for (int i = 0; i < frequencias.length; i++)
-                resultado += i + " : " + frequencias[i] + "\n";
-
-        System.out.println(resultado);
-        return resultado;
+        for (int i = 0; i < array.length; i++) 
+        	if (array[i] >= 0 && array[i] <= 100) frequencias[array[i]]++;
+        return frequencias;
     }
 
     public void ordenar(){
@@ -76,6 +51,10 @@ public class ArrayInteiros {
     
     @Override
     public String toString(){
-        return Arrays.toString(array);
+        final String arrayString = Arrays.toString(array);// = "[ a, b, c, d ]"
+        
+        return arrayString
+        		.substring(1, arrayString.length() - 1) // = " a, b, c, d "
+        		.replace(" ", ""); // = "a,b,c,d"
     }
 }

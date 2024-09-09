@@ -1,6 +1,11 @@
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
+import static org.junit.Assert.assertNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class PessoaTestAvancado
@@ -12,15 +17,15 @@ public class PessoaTestAvancado
 
     @Test
     public void deveCumprirEnunciadoDoExercicio(){
-        String nome1 = "Maria";
-        double peso1 = 60.5;
-        double altura1 = 1.65;
-        int anoNascimento1 = 1990;
+    	final String nome1 = "Maria";
+    	final double peso1 = 60.5;
+    	final double altura1 = 1.65;
+    	final int anoNascimento1 = 1990;
 
-        String nome2 = "José";
-        double peso2 = 80.0;
-        double altura2 = 1.85;
-        int anoNascimento2 = 1985;
+    	final String nome2 = "José";
+    	final double peso2 = 80.0;
+    	final double altura2 = 1.85;
+    	final int anoNascimento2 = 1985;
 
         Pessoa maria = criarEChecarPessoa(anoNascimento1);
         Pessoa jose = criarEChecarPessoa(anoNascimento2);
@@ -49,11 +54,11 @@ public class PessoaTestAvancado
     @Test
     public void dadosDaPessoaDevemSerOsMesmosInformados(){
 
-        String nome = "Maria";
-        double peso = 56.8;
-        double altura = 1.65;
+    	final String nome = "Maria";
+    	final double peso = 56.8;
+    	final double altura = 1.65;
 
-        Pessoa maria = criarEChecarPessoa(2002);
+    	final Pessoa maria = criarEChecarPessoa(2002);
 
         maria.setNome(nome);
         maria.setPeso(peso);
@@ -95,18 +100,18 @@ public class PessoaTestAvancado
 
     @Test
     public void toStringDeveRetornarNaFormatacaoCorreta(){
-        String nome = "Maria";
-        double peso = 60.5;
-        double altura = 1.65;
-        int anoNascimento = 1990;
+    	final String nome = "Maria";
+    	final double peso = 60.5;
+    	final double altura = 1.65;
+    	final int anoNascimento = 1990;
 
-        Pessoa maria = criarEChecarPessoa(anoNascimento);
+    	final Pessoa maria = criarEChecarPessoa(anoNascimento);
 
         maria.setNome(nome);
         maria.setPeso(peso);
         maria.setAltura(altura);
 
-        String formatoCorreto = "Pessoa{" +
+        final String formatoCorreto = "Pessoa{" +
                 "anoNascimento=" + anoNascimento +
                 ", nome='" + nome + '\'' +
                 ", peso=" + peso +
@@ -117,7 +122,7 @@ public class PessoaTestAvancado
     }
 
     private Pessoa criarEChecarPessoa(int anoNascimento){
-        Pessoa pessoa = new Pessoa(anoNascimento);
+    	final Pessoa pessoa = new Pessoa(anoNascimento);
         assertNotNull(pessoa, "A pessoa não pode ser nula.");
         return pessoa;
     }

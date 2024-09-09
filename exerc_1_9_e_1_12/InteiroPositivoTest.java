@@ -1,13 +1,15 @@
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class InteiroPositivoTest {
-
+public class InteiroPositivoTest 
+{
     @Test
     public void testInteiroPositivo(){
         //Testando se são construídos números negativos.
-        InteiroPositivo n1 = new InteiroPositivo(11);
-        InteiroPositivo n2 = new InteiroPositivo(-2);
+        InteiroPositivo n1 = new InteiroPositivo();
+        n1.setValor(11);
+        InteiroPositivo n2 = new InteiroPositivo();
+        n2.setValor(-2);
         
         assertEquals(n1.getValor() >= 0, true);
         assertEquals(n2.getValor() >= 0, true);
@@ -23,9 +25,9 @@ public class InteiroPositivoTest {
         assertEquals(n1.ehImpar(), true);
         assertEquals(n2.ehImpar(), false);
         
-        //Testando impressão de valores.
-        String impressaoEsperada = "12 6 4 3 2 1 ";
-        assertEquals(impressaoEsperada, n2.imprimeDivisores());
+        //Testando divisores.
+        int[] divisoresEsperados = new int[] {12, 6, 4, 3, 2, 1};
+        assertArrayEquals(divisoresEsperados, n2.getDivisores());
         
         //Testando fatoriais
         long fatorialDe5 = 120;
@@ -37,18 +39,19 @@ public class InteiroPositivoTest {
         assertEquals(fatorialDe5, n1.fatorial());
         assertEquals(fatorialDe7, n2.fatorial());
         
-        InteiroPositivo n3 = new InteiroPositivo(10);
+        InteiroPositivo n3 = new InteiroPositivo();
+        n3.setValor(5);
         double formatoDeCasasDepoisDaVirgula = 0.0001;
         
         //Testando o h(x)
-        double resultadoEsperado = 2.9289; //h(10) = 2.9289
-        double hx = n3.funcaoH();
+        double resultadoEsperado = 2.2833; //h(5) = 2.2833
+        double hx = n3.h();
         
         assertEquals(resultadoEsperado, hx, formatoDeCasasDepoisDaVirgula);
         
         //Testando o p(x)
         resultadoEsperado = 0.420735492; //p(10) = 0.420735492
-        double px = n3.funcaoP();
+        double px = n3.p();
         
         assertEquals(resultadoEsperado, px, formatoDeCasasDepoisDaVirgula);
         
@@ -61,5 +64,8 @@ public class InteiroPositivoTest {
         
         assertEquals(raizDe144, n1.raizQuadrada());
         assertEquals(raizDeNumeroBemGrande, n2.raizQuadrada());
+        
+        //Testando impressão do valor
+        assertEquals("144", n1.toString());
     }
 }

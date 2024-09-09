@@ -1,4 +1,5 @@
-public class Funcionario {
+public class Funcionario 
+{
     private String nome;
     private double salarioHora;
     private double horasTrabalhadas;
@@ -16,9 +17,8 @@ public class Funcionario {
     }
 
     public boolean setNome(String nome) {
-        boolean nomeValido = !nome.isBlank();
+        final boolean nomeValido = !nome.isBlank();
         if (nomeValido) this.nome = nome;
-
         return nomeValido;
     }
 
@@ -27,9 +27,8 @@ public class Funcionario {
     }
 
     public boolean setHorasTrabalhadas(double horasTrabalhadas) {
-        boolean horasInformadasValidas = horasTrabalhadas > 0;
+        final boolean horasInformadasValidas = horasTrabalhadas > 0;
         if(horasInformadasValidas) this.horasTrabalhadas = horasTrabalhadas;
-
         return horasInformadasValidas;
     }
 
@@ -38,9 +37,8 @@ public class Funcionario {
     }
 
     public boolean setSalarioHora(double salarioHora) {
-        boolean salarioInformadoValido = salarioHora > 0;
+        final boolean salarioInformadoValido = salarioHora > 0;
         if(salarioInformadoValido) this.salarioHora = salarioHora;
-
         return salarioInformadoValido;
     }
 
@@ -49,9 +47,8 @@ public class Funcionario {
     }
 
     public boolean setQuantidadeDependentes(int quantidadeDependentes) {
-        boolean quantidadeDependentesValida = quantidadeDependentes > 0;
+        final boolean quantidadeDependentesValida = quantidadeDependentes > 0;
         if(quantidadeDependentesValida) this.quantidadeDependentes = quantidadeDependentes;
-
         return quantidadeDependentesValida;
     }
 
@@ -60,13 +57,13 @@ public class Funcionario {
     }
 
     public double descontoINSS(){
-        double salarioBruto = getSalarioBruto();
+        final double salarioBruto = getSalarioBruto();
         if (salarioBruto > 1000) return salarioBruto * 0.09;
         return salarioBruto * 0.085;
     }
 
     public double descontoImpostoDeRenda(){
-        double salarioBruto = getSalarioBruto();
+        final double salarioBruto = getSalarioBruto();
 
         if(salarioBruto > 500) {
             if (salarioBruto > 1000) return salarioBruto * 0.07;

@@ -19,9 +19,8 @@ public class Pessoa {
     }
 
     public boolean setNome(String nome) {
-        boolean ehNomeValido = !nome.isBlank();
+        final boolean ehNomeValido = !nome.isBlank();
         if (ehNomeValido) this.nome = nome;
-        
         return ehNomeValido;
     }
 
@@ -30,9 +29,8 @@ public class Pessoa {
     }
 
     public boolean setPeso(double peso) {
-        boolean ehPesoValido = peso > 0.0;
+        final boolean ehPesoValido = peso > 0.0;
         if (ehPesoValido) this.peso = peso;
-
         return ehPesoValido;
     }
 
@@ -41,9 +39,8 @@ public class Pessoa {
     }
 
     public boolean setAltura(double altura) {
-        boolean ehAlturaValida = altura > 0.0;
+        final boolean ehAlturaValida = altura > 0.0;
         if(ehAlturaValida) this.altura = altura;
-
         return ehAlturaValida;
     }
 
